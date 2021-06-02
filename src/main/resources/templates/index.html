@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="ISO-8859-1" />
+    <title>High Chart</title>
+</head>
+<body>
+<form th:action="@{Home/barChart}"  method="get" target="_blank">
+
+    <p>Tu id: <input type="number" name="id" th:name="id"> <input type="submit" value="Enviar datos"></p>
+
+</form>
+<div align="center">
+    <a th:href="@{Home/barChart}">Bar-Chart</a><br /> <br /> <a
+        th:href="@{Home/pieChart}">Pie-Chart</a>
+</div>
+</body>
+</html>
