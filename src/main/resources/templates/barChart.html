@@ -5,6 +5,7 @@
   <link rel="stylesheet"
         href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" />
 
+
   <!-- Optional theme -->
   <link rel="stylesheet"
         href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" />
@@ -31,7 +32,7 @@
         type: 'column'
       },
       title: {
-        text: 'Organization'
+        text: 'Estadisticas'
       },
       subtitle: {
         text: 'Details'
@@ -42,7 +43,7 @@
       },
       yAxis: {
         min: 0,
-        max:1000,
+        max:100,
         title: {
           text: 'Tiempo de Estudio'
         }
@@ -68,6 +69,24 @@
     });
   });
 </script>
+<div class="container" th:label="center">
+  <table class="table table-dark">
+    <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">Materia</th>
+      <th scope="col">Tiempo</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="materias,iter :${Materias}"  >
+      <td th:text="${iter.index+1}"></td>
+      <td th:text="${materias.key}"></td>
+      <td th:text="${materias.value}"> </td>
+    </tr>
+    </tbody>
+  </table>
+</div>
 
 </body>
 </html>

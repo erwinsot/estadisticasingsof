@@ -22,21 +22,28 @@ public class UserController {
     @Autowired
     private UserService userService;
 
-    @GetMapping("/barChart")
-    public  String barChart(Model model,@RequestParam(value = "id",defaultValue = "7") Long id ){
-        Optional<User> oPersona=userService.findById(id);
-        Map<String,Integer> data=new LinkedHashMap<String,Integer>();
+    @GetMapping("/barChart/{id}")
+    public  String barChart(Model model,
+                            @PathVariable @RequestParam(value = "id",defaultValue = "7") Long id
+                             )throws  Exception{
+        Optional<User> oPersona= Optional.ofNullable(userService.findById(id));
+        if(!oPersona.isPresent()){
+            return  "error";
+        }
+       /* Map<String,Integer> data=new LinkedHashMap<String,Integer>();
         data.put("sss",30);
         data.put("sdsd",300);
         data.put("sdsgdfss",50);
         data.put("ssfafss",350);
         data.put("fsfassss",59);
         data.put("ssdasfs",64);
-        data.put("sfasgass",411);
+        data.put("sfasgass",411);*/
         model.addAttribute("keySet",oPersona.get().getMateria().keySet());
         model.addAttribute("values",oPersona.get().getMateria().values());
+        model.addAttribute("Materias",oPersona.get().getMateria());
         return "barChart";
     }
+
     @GetMapping("/pieChart")
     public String pieChart(Model model) {
         model.addAttribute("pass", 90);
@@ -59,8 +66,8 @@ public class UserController {
 
     }
     @GetMapping("/{id}")
-    public ResponseEntity<?>read(@PathVariable Long id){
-        Optional<User> oPersona=userService.findById(id);
+    public ResponseEntity<?>read(@PathVariable Long id) throws Exception {
+        Optional<User> oPersona= Optional.ofNullable(userService.findById(id));
 
         if(!oPersona.isPresent()){
             return ResponseEntity.notFound().build();

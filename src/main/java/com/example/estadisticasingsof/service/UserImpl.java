@@ -7,7 +7,6 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
-import java.util.Optional;
 @Service
 public class UserImpl implements UserService {
     @Autowired
@@ -24,8 +23,8 @@ public class UserImpl implements UserService {
     }
 
     @Override
-    public Optional<User> findById(Long id) {
-        return userRepository.findById(id);
+    public User findById(Long id)throws Exception {
+        return userRepository.findById(id).orElseThrow(()->new Exception("El usuario no exsite"));
     }
 
     @Override
