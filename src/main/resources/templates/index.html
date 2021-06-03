@@ -1,18 +1,27 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
 <head>
     <meta charset="ISO-8859-1" />
     <title>High Chart</title>
 </head>
+
 <body>
-<form th:action="@{Home/barChart}"  method="get" target="_blank">
-
-    <p>Tu id: <input type="number" name="id" th:name="id"> <input type="submit" value="Enviar datos"></p>
-
-</form>
 <div align="center">
-    <a th:href="@{Home/barChart}">Bar-Chart</a><br /> <br /> <a
-        th:href="@{Home/pieChart}">Pie-Chart</a>
+    <form th:action="@{Home/barChart/{id}}"  method="get" >
+
+        <p>Tu id: <input type="number" name="id" th:name="id"> <input type="submit" value="Enviar datos"></p>
+
+
+
+    </form>
 </div>
+
+
+<div align="center">
+   <!-- <a th:href="@{Home/barChart/{id}(id=12)}"> Bar-Chart</a><br /> <br />-->
+    <a th:href="@{Home/pieChart}">Pie-Chart</a>
+</div>
+
 </body>
 </html>
