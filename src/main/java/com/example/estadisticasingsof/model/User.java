@@ -4,6 +4,7 @@ import org.springframework.data.annotation.Id;
 
 import java.sql.Array;
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Map;
 
 public class User {
@@ -14,8 +15,15 @@ public class User {
     private Map materia;
     private long tiempo;
     private String correo;
+    private List prueba;
 
+    public List getPrueba() {
+        return prueba;
+    }
 
+    public void setPrueba(List prueba) {
+        this.prueba = prueba;
+    }
 
     public long getId() {
         return id;
@@ -65,12 +73,15 @@ public class User {
         this.correo = correo;
     }
 
-    public User(long id, String nombre, String apellido, Map materia, long tiempo, String correo) {
+    public User(long id, String nombre, String apellido, Map materia, long tiempo, String correo, List prueba) {
         this.id = id;
         this.nombre = nombre;
         this.apellido = apellido;
         this.materia = materia;
         this.tiempo = tiempo;
         this.correo = correo;
+        this.prueba = prueba;
     }
+
+
 }

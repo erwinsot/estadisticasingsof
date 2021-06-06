@@ -10,10 +10,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.LinkedHashMap;
-import java.util.Map;
-import java.util.Optional;
-import java.util.TreeMap;
+import java.util.*;
 
 @Controller
 @RequestMapping("/Home")
@@ -21,6 +18,14 @@ import java.util.TreeMap;
 public class UserController {
     @Autowired
     private UserService userService;
+
+
+    @GetMapping(value = "/All")
+    public ResponseEntity<List<User>> getAll(){
+        List<User>list=userService.findAlls();
+        return ResponseEntity.ok(list);
+    }
+
 
     @GetMapping("/barChart/{id}")
     public  String barChart(Model model,
@@ -72,6 +77,6 @@ public class UserController {
         if(!oPersona.isPresent()){
             return ResponseEntity.notFound().build();
         }
-        return  ResponseEntity.ok(oPersona.get().getMateria());
+        return  ResponseEntity.ok(oPersona.get().getPrueba());
     }
 }
