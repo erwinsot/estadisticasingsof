@@ -7,6 +7,8 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class UserImpl implements UserService {
     @Autowired
@@ -40,5 +42,11 @@ public class UserImpl implements UserService {
     @Override
     public void insert() {
 
+    }
+
+    @Override
+    public List<User> findAlls() {
+
+        return userRepository.findAll();
     }
 }
